@@ -31,7 +31,7 @@ struct SparkContext;
 struct RDDBase {
     virtual size_t id() = 0;
     unique_ptr<IterBase> iterator(unique_ptr<Split> split) {
-        return unique_ptr<IterBase>{ iterator_impl(move(split)) };
+        return unique_ptr<IterBase>{ iterator_impl(std::move(split)) };
     }
     virtual IterBase* iterator_impl(unique_ptr<Split> split) = 0;
     // virtual vector<Partition> getPartitions() = 0;
